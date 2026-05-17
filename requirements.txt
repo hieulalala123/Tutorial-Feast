@@ -1,0 +1,7 @@
+feast
+fastapi
+uvicorn[standard]==0.32.0
+pandas
+pyarrow
+scikit-learn
+joblib

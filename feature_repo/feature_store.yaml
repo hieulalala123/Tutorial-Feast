@@ -1,0 +1,39 @@
+# Feast configure file
+# Doc: https://docs.feast.dev/reference/feature-repository/feature-store-yaml
+
+project: churn_prediction
+
+# Registry: nơi lưu metadata của features (entity, feature view, source)
+# Phase 1: dùng file SQLite local để bắt đầu
+
+registry: data/registry.db
+
+# Provider: backend infra
+provider: local
+
+# Online Store: Nơi lưu feature mới nhất để serving
+
+#  Phase 1: dùng SQLite 
+#  Phase 3: dùng Redis
+
+online_store: 
+  type: sqlite
+  path: data/online_store.db
+
+# Offline Store: nơi lưu data lịch sử cho training
+
+# Phase 1: dùng file provider - đọc trực tiếp từ Parquet
+
+offline_store:
+  type: file
+
+
+# Entity Key Serialization: cách encode entity key vào online store
+
+entity_key_serialization_version: 3
+
+# Authorization (advanced: chưa dùng)
+
+auth:
+  type: no_auth
+  
